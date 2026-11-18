@@ -1,0 +1,78 @@
+{
+    "name": "jeffersongoncalves/laravel-privacy",
+    "description": "Shared privacy engine for the LGPD, GDPR, CCPA, US state and Quebec Law 25 suites: personal data declarations, inventory, anonymization, k-anonymity, retention with tombstones, hash-chained audit log and consent ledger.",
+    "keywords": [
+        "laravel",
+        "privacy",
+        "personal-data",
+        "data-protection",
+        "gdpr",
+        "lgpd",
+        "ccpa",
+        "anonymization",
+        "consent",
+        "audit-log"
+    ],
+    "homepage": "https://github.com/jeffersongoncalves/laravel-privacy",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jefferson Simão Gonçalves",
+            "email": "gerson.simao.92@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "spatie/laravel-package-tools": "^1.16",
+        "illuminate/console": "^12.0|^13.0",
+        "illuminate/contracts": "^12.0|^13.0",
+        "illuminate/database": "^12.0|^13.0",
+        "illuminate/http": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.24",
+        "orchestra/testbench": "^10.0|^11.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JeffersonGoncalves\\Privacy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JeffersonGoncalves\\Privacy\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint",
+        "analyse": "vendor/bin/phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JeffersonGoncalves\\Privacy\\PrivacyServiceProvider"
+            ],
+            "aliases": {
+                "Privacy": "JeffersonGoncalves\\Privacy\\Facades\\Privacy"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
